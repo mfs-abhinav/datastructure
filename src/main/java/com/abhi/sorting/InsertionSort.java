@@ -3,20 +3,21 @@ package com.abhi.sorting;
 import java.util.Arrays;
 
 public class InsertionSort {
-	
+	// complexity in best case O(n) -> when array is sorted
+	// O(n^2) in worst case
 	private static int[] insertionSort(int[] arr) {
 		
-		for(int i=1; i< arr.length; i++) {
-			
-			int value = arr[i];
-			int hole = i;
-			
-			while(hole > 0 && arr[hole-1] > value) {
-				arr[hole] = arr[hole-1];
-				hole = hole-1;
+		for(int i = 1; i< arr.length; i++) {
+			for (int j = i - 1; j >= 0; j--) {
+				if (arr[j] > arr[j + 1]) {
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				} else {
+					break;
+				}
 			}
-			
-			arr[hole] = value;
+
 		}
 		
 		return arr;
